@@ -22,18 +22,6 @@ namespace Toverland_Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // Configure one-to-many relationship between Area and Attraction
-            modelBuilder.Entity<Attraction>()
-                .HasOne(a => a.Area)
-                .WithMany(b => b.Attractions)
-                .HasForeignKey(a => a.AreaId);
-
-            // Configure one-to-many relationship between Attraction and Maintenance
-            modelBuilder.Entity<Maintenance>()
-                .HasOne(m => m.Attraction)
-                .WithMany(a => a.Maintenances)
-                .HasForeignKey(m => m.AttractionId);
         }
 
         public void Seed()

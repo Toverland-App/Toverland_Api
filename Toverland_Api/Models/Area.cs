@@ -3,7 +3,8 @@
     public class Area
     {
         public int Id { get; set; }
-        public required string Name { get; set; } // Add required modifier
-        public List<Attraction> Attractions { get; set; } = new List<Attraction>(); // Initialize list
+        public string Name { get; set; }
+        public double Size { get; set; }
+        //public List<Attraction>? Attractions { get; set; } = new();
     }
 }
