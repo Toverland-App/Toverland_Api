@@ -3,6 +3,7 @@ using Toverland_Api.Data;
 using Toverland_Api.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Toverland_Api.Controllers
 {
@@ -20,8 +21,13 @@ namespace Toverland_Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Area>> Get()
         {
-            return Ok(_context.Areas.ToList());
+            var areas = _context.Areas
+                .Include(a => a.Attractions)
+                .ToList();
+
+            return Ok(areas);
         }
+
 
         [HttpGet("{id}")]
         public ActionResult<Area> Get(int id)

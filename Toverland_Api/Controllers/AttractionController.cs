@@ -16,12 +16,21 @@ namespace Toverland_Api.Controllers
         {
             _context = context;
         }
-
         [HttpGet]
         public ActionResult<IEnumerable<Attraction>> Get()
         {
-            return Ok(_context.Attractions.ToList());
+            var attractions = _context.Attractions
+                .Select(a => new Attraction
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    AreaId = a.AreaId,
+                    Area = null // Exclude Area to avoid circular reference
+                }).ToList();
+
+            return Ok(attractions);
         }
+
 
         [HttpGet("{id}")]
         public ActionResult<Attraction> Get(int id)
@@ -37,10 +46,16 @@ namespace Toverland_Api.Controllers
         [HttpPost]
         public ActionResult<Attraction> Post([FromBody] Attraction attraction)
         {
+            if (attraction == null)
+            {
+                return BadRequest("Attraction is null.");
+            }
+
             _context.Attractions.Add(attraction);
             _context.SaveChanges();
             return CreatedAtAction(nameof(Get), new { id = attraction.Id }, attraction);
         }
+
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Attraction updatedAttraction)
