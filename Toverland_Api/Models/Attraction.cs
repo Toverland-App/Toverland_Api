@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 
 namespace Toverland_Api.Models
@@ -11,6 +12,9 @@ namespace Toverland_Api.Models
 
         [JsonIgnore] // Exclude Area from serialization
         public Area? Area { get; set; }
-    } 
+        [NotMapped]
+        public object Maintenances { get; set; }
+
+    }
 
 }

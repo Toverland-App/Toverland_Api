@@ -24,6 +24,7 @@ namespace Toverland_Api.Data
             base.OnModelCreating(modelBuilder);
         }
 
+
         public void Seed()
         {
             _logger.LogInformation("Starting database seeding...");
