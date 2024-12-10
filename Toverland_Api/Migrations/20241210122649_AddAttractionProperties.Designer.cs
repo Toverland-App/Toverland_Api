@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Toverland_Api.Data;
 
@@ -11,9 +12,11 @@ using Toverland_Api.Data;
 namespace Toverland_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241210122649_AddAttractionProperties")]
+    partial class AddAttractionProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,30 +56,25 @@ namespace Toverland_Api.Migrations
                     b.Property<int>("AreaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Capacity")
+                    b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ClosingTime")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<double?>("MinHeight")
+                    b.Property<bool>("IsOperational")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<double>("MinHeight")
                         .HasColumnType("double");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("OpeningTime")
+                    b.Property<DateTime>("OpeningDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("QueueLength")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("QueueSpeed")
-                        .HasColumnType("double");
 
                     b.HasKey("Id");
 

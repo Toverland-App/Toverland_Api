@@ -21,7 +21,7 @@ namespace Toverland_Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Area>> Get()
         {
-            var areas = _context.Areas
+                var areas = _context.Areas
                 .Include(a => a.Attractions)
                 .ToList();
 
