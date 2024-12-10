@@ -35,14 +35,14 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Seeding Areas...");
                     var areas = new[]
- {
-                new Area { Name = "Land van Toos", Size = 10.5 },
-                new Area { Name = "Avalon", Size = 15.0 },
-                new Area { Name = "Port Laguna", Size = 8.3 },
-                new Area { Name = "Ithaka", Size = 12.7 },
-                new Area { Name = "Magische Vallei", Size = 14.2 },
-                new Area { Name = "Wunderwald", Size = 9.8 }
-            };
+                    {
+                    new Area { Name = "Land van Toos", Size = 10.5 },
+                    new Area { Name = "Avalon", Size = 15.0 },
+                    new Area { Name = "Port Laguna", Size = 8.3 },
+                    new Area { Name = "Ithaka", Size = 12.7 },
+                    new Area { Name = "Magische Vallei", Size = 14.2 },
+                    new Area { Name = "Wunderwald", Size = 9.8 }
+                        };
                     Areas.AddRange(areas);
                     SaveChanges();
                     _logger.LogInformation("Areas seeded.");

@@ -13,7 +13,7 @@ namespace Toverland_Api.Models
         [JsonIgnore] // Exclude Area from serialization
         public Area? Area { get; set; }
         [NotMapped]
-        public object Maintenances { get; set; }
+        public object? Maintenances { get; set; }
 
     }
 
