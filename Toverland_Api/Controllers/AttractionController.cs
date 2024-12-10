@@ -17,6 +17,7 @@ namespace Toverland_Api.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
         {
@@ -26,7 +27,6 @@ namespace Toverland_Api.Controllers
 
             return Ok(attractions);
         }
-
 
         [HttpGet("{id}")]
         public ActionResult<Attraction> Get(int id)
@@ -47,21 +47,45 @@ namespace Toverland_Api.Controllers
                 return BadRequest("Attraction is null.");
             }
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Attractions.Add(attraction);
             _context.SaveChanges();
             return CreatedAtAction(nameof(Get), new { id = attraction.Id }, attraction);
         }
 
-
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Attraction updatedAttraction)
         {
+            if (updatedAttraction == null)
+            {
+                return BadRequest("Updated attraction is null.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var attraction = _context.Attractions.FirstOrDefault(a => a.Id == id);
             if (attraction == null)
             {
                 return NotFound();
             }
+
             attraction.Name = updatedAttraction.Name;
+            attraction.MinHeight = updatedAttraction.MinHeight;
+            attraction.AreaId = updatedAttraction.AreaId;
+            attraction.Description = updatedAttraction.Description;
+            attraction.OpeningTime = updatedAttraction.OpeningTime;
+            attraction.ClosingTime = updatedAttraction.ClosingTime;
+            attraction.Capacity = updatedAttraction.Capacity;
+            attraction.QueueSpeed = updatedAttraction.QueueSpeed;
+            attraction.QueueLength = updatedAttraction.QueueLength;
+
             _context.SaveChanges();
             return NoContent();
         }

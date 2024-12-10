@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Toverland_Api.Data;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,10 @@ builder.Logging.AddConsole();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
     });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -51,3 +54,31 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// Custom TimeSpan converter
+public class TimeSpanConverter : JsonConverter<TimeSpan?>
+{
+    public override TimeSpan? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType == JsonTokenType.String)
+        {
+            if (TimeSpan.TryParse(reader.GetString(), out var timeSpan))
+            {
+                return timeSpan;
+            }
+        }
+        return null;
+    }
+
+    public override void Write(Utf8JsonWriter writer, TimeSpan? value, JsonSerializerOptions options)
+    {
+        if (value.HasValue)
+        {
+            writer.WriteStringValue(value.Value.ToString("c"));
+        }
+        else
+        {
+            writer.WriteNullValue();
+        }
+    }
+}
