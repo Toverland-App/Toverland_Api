@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Toverland_Api.Data;
 
@@ -11,9 +12,11 @@ using Toverland_Api.Data;
 namespace Toverland_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241210131055_AddAttractionProperties3")]
+    partial class AddAttractionProperties3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,8 +59,8 @@ namespace Toverland_Api.Migrations
                     b.Property<int?>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("ClosingTime")
-                        .HasColumnType("time(6)");
+                    b.Property<DateTime?>("ClosingTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
@@ -69,8 +72,8 @@ namespace Toverland_Api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<TimeSpan?>("OpeningTime")
-                        .HasColumnType("time(6)");
+                    b.Property<DateTime?>("OpeningTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int?>("QueueLength")
                         .HasColumnType("int");

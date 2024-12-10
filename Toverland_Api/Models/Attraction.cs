@@ -12,10 +12,10 @@ namespace Toverland_Api.Models
 
         [JsonIgnore] // Exclude Area from serialization
         public Area? Area { get; set; }
-        
+
         public string? Description { get; set; } = string.Empty;
-        public DateTime? OpeningTime { get; set; }
-        public DateTime? ClosingTime { get; set; }
+        public TimeSpan? OpeningTime { get; set; }
+        public TimeSpan? ClosingTime { get; set; }
 
         public int? Capacity { get; set; }
         public double? QueueSpeed { get; set; } // e.g., number of people per minute

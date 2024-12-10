@@ -3,6 +3,7 @@ using Toverland_Api.Data;
 using Toverland_Api.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Toverland_Api.Controllers
 {
@@ -17,16 +18,11 @@ namespace Toverland_Api.Controllers
             _context = context;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Attraction>> Get()
+        public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
         {
-            var attractions = _context.Attractions
-                .Select(a => new Attraction
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    AreaId = a.AreaId,
-                    Area = null // Exclude Area to avoid circular reference
-                }).ToList();
+            var attractions = await _context.Attractions
+                .Include(a => a.Area) // Include related Area entity
+                .ToListAsync();
 
             return Ok(attractions);
         }
