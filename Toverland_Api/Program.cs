@@ -27,8 +27,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Add CORS services
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://127.0.0.1:5500")
+    options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin()
                           .AllowAnyHeader()
                           .AllowAnyMethod());
 });
@@ -62,7 +62,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 // Use CORS middleware
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
