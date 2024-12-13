@@ -18,6 +18,7 @@ namespace Toverland_Api.Data
         public DbSet<Area> Areas { get; set; }
         public DbSet<Attraction> Attractions { get; set; }
         public DbSet<Maintenance> Maintenances { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -80,6 +81,28 @@ namespace Toverland_Api.Data
                 else
                 {
                     _logger.LogInformation("Attractions already exist. Skipping seeding.");
+                }
+
+                if (!Employees.Any())
+                {
+                    _logger.LogInformation("Seeding Employees...");
+                    var areas = Areas.ToList(); // Fetch areas from the database
+                    var employees = new[]
+                    {
+                        new Employee { Name = "John Doe", Role = "Manager", Area = areas[0], Email = "john.doe@example.com", PhoneNumber = "123-456-7890", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                        new Employee { Name = "Jane Smith", Role = "Operator", Area = areas[1], Email = "jane.smith@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                        new Employee { Name = "Alice Johnson", Role = "Technician", Area = areas[2], Email = "alice.johnson@example.com", PhoneNumber = "345-678-9012", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                        new Employee { Name = "Bob Brown", Role = "Security", Area = areas[3], Email = "bob.brown@example.com", PhoneNumber = "456-789-0123", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                        new Employee { Name = "Charlie Davis", Role = "Cleaner", Area = areas[4], Email = "charlie.davis@example.com", PhoneNumber = "567-890-1234", HireDate = DateTime.Now.AddYears(-1), IsActive = true }
+                    };
+
+                    Employees.AddRange(employees);
+                    SaveChanges();
+                    _logger.LogInformation("Employees seeded.");
+                }
+                else
+                {
+                    _logger.LogInformation("Employees already exist. Skipping seeding.");
                 }
 
                 _logger.LogInformation("Database seeding completed.");
