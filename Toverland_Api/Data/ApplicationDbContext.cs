@@ -93,7 +93,8 @@ namespace Toverland_Api.Data
                         new Employee { Name = "Jane Smith", Role = "Operator", Area = areas[1], Email = "jane.smith@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
                         new Employee { Name = "Alice Johnson", Role = "Technician", Area = areas[2], Email = "alice.johnson@example.com", PhoneNumber = "345-678-9012", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
                         new Employee { Name = "Bob Brown", Role = "Security", Area = areas[3], Email = "bob.brown@example.com", PhoneNumber = "456-789-0123", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
-                        new Employee { Name = "Charlie Davis", Role = "Cleaner", Area = areas[4], Email = "charlie.davis@example.com", PhoneNumber = "567-890-1234", HireDate = DateTime.Now.AddYears(-1), IsActive = true }
+                        new Employee { Name = "Charlie Davis", Role = "Cleaner", Area = areas[4], Email = "charlie.davis@example.com", PhoneNumber = "567-890-1234", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                        new Employee { Name = "Jeroen Verhoeven", Role = "Pizza", Area = areas[1], Email = "jeroen.Verhoeven@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
                     };
 
                     Employees.AddRange(employees);
