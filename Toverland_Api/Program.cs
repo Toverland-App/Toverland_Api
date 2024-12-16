@@ -3,6 +3,7 @@ using Toverland_Api.Data;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +21,22 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
     });
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' is not configured.");
+}
+
+if (builder.Environment.IsDevelopment())
+{
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
     new MySqlServerVersion(new Version(8, 0, 21))));
+}
+else
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()));
+}
 
 // Add CORS services
 builder.Services.AddCors(options =>

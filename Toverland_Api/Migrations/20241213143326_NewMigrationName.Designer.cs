@@ -12,8 +12,8 @@ using Toverland_Api.Data;
 namespace Toverland_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241210132122_AddAttractionProperties4")]
-    partial class AddAttractionProperties4
+    [Migration("20241213143326_NewMigrationName")]
+    partial class NewMigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +21,9 @@ namespace Toverland_Api.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.2")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Toverland_Api.Models.Area", b =>
                 {
@@ -31,14 +31,14 @@ namespace Toverland_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Size")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -51,7 +51,7 @@ namespace Toverland_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AreaId")
                         .HasColumnType("int");
@@ -60,32 +60,73 @@ namespace Toverland_Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<TimeSpan?>("ClosingTime")
-                        .HasColumnType("time(6)");
+                        .HasColumnType("time");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<double?>("MinHeight")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<TimeSpan?>("OpeningTime")
-                        .HasColumnType("time(6)");
+                        .HasColumnType("time");
 
                     b.Property<int?>("QueueLength")
                         .HasColumnType("int");
 
                     b.Property<double?>("QueueSpeed")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AreaId");
 
+                    b.HasIndex("EmployeeId");
+
                     b.ToTable("Attractions");
+                });
+
+            modelBuilder.Entity("Toverland_Api.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AreaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Toverland_Api.Models.Maintenance", b =>
@@ -94,19 +135,19 @@ namespace Toverland_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AttractionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -123,6 +164,19 @@ namespace Toverland_Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Toverland_Api.Models.Employee", null)
+                        .WithMany("Attractions")
+                        .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Area");
+                });
+
+            modelBuilder.Entity("Toverland_Api.Models.Employee", b =>
+                {
+                    b.HasOne("Toverland_Api.Models.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId");
+
                     b.Navigation("Area");
                 });
 
@@ -138,6 +192,11 @@ namespace Toverland_Api.Migrations
                 });
 
             modelBuilder.Entity("Toverland_Api.Models.Area", b =>
+                {
+                    b.Navigation("Attractions");
+                });
+
+            modelBuilder.Entity("Toverland_Api.Models.Employee", b =>
                 {
                     b.Navigation("Attractions");
                 });
