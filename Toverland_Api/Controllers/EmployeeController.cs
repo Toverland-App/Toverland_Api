@@ -38,7 +38,7 @@ namespace Toverland_Api.Controllers
 
         // POST: api/Employee
         [HttpPost]
-        public async Task<IActionResult> CreateEmployee([Bind("Id,Name,Position,Department,Salary")] Employee employee)
+        public async Task<IActionResult> CreateEmployee([Bind("Name,Role,AreaId,Email,PhoneNumber,HireDate,IsActive")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -51,23 +51,31 @@ namespace Toverland_Api.Controllers
 
         // PUT: api/Employee/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditEmployee(int id, [Bind("Id,Name,Position,Department,Salary")] Employee employee)
+        public async Task<IActionResult> EditEmployee(int id, [Bind("Name,Role,AreaId,Email,PhoneNumber,HireDate,IsActive")] Employee employee)
         {
-            if (id != employee.Id)
-            {
-                return BadRequest();
-            }
-
             if (ModelState.IsValid)
             {
+                var existingEmployee = await _context.Employees.FindAsync(id);
+                if (existingEmployee == null)
+                {
+                    return NotFound();
+                }
+
+                existingEmployee.Name = employee.Name;
+                existingEmployee.Role = employee.Role;
+                existingEmployee.AreaId = employee.AreaId;
+                existingEmployee.Email = employee.Email;
+                existingEmployee.PhoneNumber = employee.PhoneNumber;
+                existingEmployee.HireDate = employee.HireDate;
+                existingEmployee.IsActive = employee.IsActive;
+
                 try
                 {
-                    _context.Update(employee);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.Id))
+                    if (!EmployeeExists(id))
                     {
                         return NotFound();
                     }
