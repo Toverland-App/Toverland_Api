@@ -21,7 +21,6 @@ namespace Toverland_Api.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<VisitorCount> VisitorCounts { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -103,6 +102,11 @@ namespace Toverland_Api.Data
                     SaveChanges();
                     _logger.LogInformation("Employees seeded.");
                 }
+                else
+                {
+                    _logger.LogInformation("Employees already exist. Skipping seeding.");
+                }
+
                 if (!VisitorCounts.Any())
                 {
                     _logger.LogInformation("Seeding VisitorCounts...");
@@ -115,10 +119,9 @@ namespace Toverland_Api.Data
                     SaveChanges();
                     _logger.LogInformation("VisitorCounts seeded.");
                 }
-
                 else
                 {
-                    _logger.LogInformation("Employees already exist. Skipping seeding.");
+                    _logger.LogInformation("VisitorCounts already exist. Skipping seeding.");
                 }
 
                 _logger.LogInformation("Database seeding completed.");

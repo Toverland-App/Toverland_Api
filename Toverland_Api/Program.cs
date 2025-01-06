@@ -3,6 +3,7 @@ using Toverland_Api.Data;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Toverland_Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,9 @@ if (string.IsNullOrEmpty(connectionString))
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()));
+
+// Register DataDumpService
+builder.Services.AddTransient<DataDumpService>();
 
 // Add CORS services
 builder.Services.AddCors(options =>
@@ -55,27 +59,41 @@ using (var scope = app.Services.CreateScope())
     dbContext.Seed();
 }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Handle dumpdata command
+if (args.Length > 0 && args[0] == "dumpdata")
 {
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var dataDumpService = services.GetRequiredService<DataDumpService>();
+
+    var filePath = args.Length > 1 ? args[1] : "data_dump.json";
+    await dataDumpService.DumpDataAsync(filePath);
+    Console.WriteLine($"Data dumped to {filePath}");
+}
+else
+{
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseSwagger();
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
+    }
+
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
+
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+
+    // Use CORS middleware
+    app.UseCors("AllowAll");
+
+    app.MapControllers();
+
+    app.Run();
 }
-
-app.UseDeveloperExceptionPage();
-app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-
-// Use CORS middleware
-app.UseCors("AllowAll");
-
-app.MapControllers();
-
-app.Run();
 
 // Custom TimeSpan converter
 public class TimeSpanConverter : JsonConverter<TimeSpan?>

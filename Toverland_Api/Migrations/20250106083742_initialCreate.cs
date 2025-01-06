@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Toverland_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class NewMigrationName : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,20 @@ namespace Toverland_Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Areas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitorCounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Count = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitorCounts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +144,9 @@ namespace Toverland_Api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Maintenances");
+
+            migrationBuilder.DropTable(
+                name: "VisitorCounts");
 
             migrationBuilder.DropTable(
                 name: "Attractions");
