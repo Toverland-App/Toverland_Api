@@ -24,6 +24,11 @@ namespace Toverland_Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Area>()
+                .HasMany(a => a.Attractions)
+                .WithOne(at => at.Area)
+                .HasForeignKey(at => at.AreaId);
         }
 
         public void Seed()

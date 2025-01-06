@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -9,13 +10,14 @@ namespace Toverland_Api.Models
         public int Id { get; set; }
 
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         public double? MinHeight { get; set; }
 
         [Required]
         public int AreaId { get; set; }
 
+        [ForeignKey("AreaId")]
         [JsonIgnore] // Exclude Area from serialization
         public Area? Area { get; set; }
 
