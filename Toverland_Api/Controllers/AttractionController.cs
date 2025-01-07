@@ -76,19 +76,21 @@ namespace Toverland_Api.Controllers
                 return NotFound();
             }
 
-            attraction.Name = updatedAttraction.Name;
-            attraction.MinHeight = updatedAttraction.MinHeight;
-            attraction.AreaId = updatedAttraction.AreaId;
-            attraction.Description = updatedAttraction.Description;
-            attraction.OpeningTime = updatedAttraction.OpeningTime;
-            attraction.ClosingTime = updatedAttraction.ClosingTime;
-            attraction.Capacity = updatedAttraction.Capacity;
-            attraction.QueueSpeed = updatedAttraction.QueueSpeed;
-            attraction.QueueLength = updatedAttraction.QueueLength;
+            // Update properties with provided values or retain old values
+            attraction.Name = updatedAttraction.Name ?? attraction.Name;
+            attraction.MinHeight = updatedAttraction.MinHeight ?? attraction.MinHeight;
+            attraction.AreaId = updatedAttraction.AreaId != 0 ? updatedAttraction.AreaId : attraction.AreaId;
+            attraction.Description = updatedAttraction.Description ?? attraction.Description;
+            attraction.OpeningTime = updatedAttraction.OpeningTime ?? attraction.OpeningTime;
+            attraction.ClosingTime = updatedAttraction.ClosingTime ?? attraction.ClosingTime;
+            attraction.Capacity = updatedAttraction.Capacity ?? attraction.Capacity;
+            attraction.QueueSpeed = updatedAttraction.QueueSpeed ?? attraction.QueueSpeed;
+            attraction.QueueLength = updatedAttraction.QueueLength ?? attraction.QueueLength;
 
             _context.SaveChanges();
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
