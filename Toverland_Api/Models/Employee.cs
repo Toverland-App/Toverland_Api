@@ -24,4 +24,9 @@ namespace Toverland_Api.Models
         [JsonIgnore]
         public List<Attraction>? Attractions { get; set; }
     }
+
+
+
 }
+
+
