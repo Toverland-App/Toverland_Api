@@ -38,5 +38,16 @@ namespace Toverland_Api.Services
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             await File.WriteAllTextAsync(filePath, json);
         }
+
+        public async Task TruncateTablesAsync()
+        {
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [VisitorCounts]");
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Maintenances]");
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Attractions]");
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Employees]");
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Areas]");
+        }
+
     }
 }
+

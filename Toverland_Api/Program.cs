@@ -55,7 +55,9 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var dataDumpService = scope.ServiceProvider.GetRequiredService<DataDumpService>();
     dbContext.Database.Migrate();
+    await dataDumpService.TruncateTablesAsync();
     dbContext.Seed();
 }
 
@@ -79,10 +81,11 @@ else
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
     }
-
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
+    else
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
+    }
 
     app.UseHttpsRedirection();
     app.UseAuthorization();
