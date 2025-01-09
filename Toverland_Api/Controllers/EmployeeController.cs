@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Toverland_Api.Data;
 using Toverland_Api.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,8 +22,25 @@ namespace Toverland_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEmployees()
         {
-            return Ok(await _context.Employees.ToListAsync());
+            var employees = await _context.Employees
+                .Include(e => e.Area)
+                .Select(e => new
+                {
+                    e.Id,
+                    e.Name,
+                    e.Role,
+                    e.AreaId,
+                    AreaName = e.Area.Name,
+                    e.Email,
+                    e.PhoneNumber,
+                    e.HireDate,
+                    e.IsActive
+                })
+                .ToListAsync();
+
+            return Ok(employees);
         }
+
 
         // GET: api/Employee/5
         [HttpGet("{id}")]
@@ -109,3 +127,4 @@ namespace Toverland_Api.Controllers
         }
     }
 }
+
