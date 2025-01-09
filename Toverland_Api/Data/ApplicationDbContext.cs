@@ -95,12 +95,64 @@ namespace Toverland_Api.Data
                     var areas = Areas.ToList(); // Fetch areas from the database
                     var employees = new[]
                     {
-                        new Employee { Name = "John Doe", Role = "Manager", Area = areas[0], Email = "john.doe@example.com", PhoneNumber = "123-456-7890", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
-                        new Employee { Name = "Jane Smith", Role = "Operator", Area = areas[1], Email = "jane.smith@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
-                        new Employee { Name = "Alice Johnson", Role = "Technician", Area = areas[2], Email = "alice.johnson@example.com", PhoneNumber = "345-678-9012", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
-                        new Employee { Name = "Bob Brown", Role = "Security", Area = areas[3], Email = "bob.brown@example.com", PhoneNumber = "456-789-0123", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
-                        new Employee { Name = "Charlie Davis", Role = "Cleaner", Area = areas[4], Email = "charlie.davis@example.com", PhoneNumber = "567-890-1234", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
-                        new Employee { Name = "Jeroen Verhoeven", Role = "Pizza", Area = areas[1], Email = "jeroen.Verhoeven@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "John Doe", Role = "Manager", Area = areas[0], Email = "john.doe@example.com", PhoneNumber = "123-456-7890", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Liam Smith", Role = "Operator", Area = areas[0], Email = "liam.smith@example.com", PhoneNumber = "234-567-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Sophia Brown", Role = "Technician", Area = areas[0], Email = "sophia.brown@example.com", PhoneNumber = "345-678-9012", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "James Johnson", Role = "Security", Area = areas[0], Email = "james.johnson@example.com", PhoneNumber = "456-789-0123", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Emma Davis", Role = "Cleaner", Area = areas[0], Email = "emma.davis@example.com", PhoneNumber = "567-890-1234", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                            new Employee { Name = "Olivia White", Role = "Technician", Area = areas[0], Email = "olivia.white@example.com", PhoneNumber = "678-901-2345", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                            new Employee { Name = "Lucas Martinez", Role = "Supervisor", Area = areas[0], Email = "lucas.martinez@example.com", PhoneNumber = "789-012-3456", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Isabella Wilson", Role = "Operator", Area = areas[0], Email = "isabella.wilson@example.com", PhoneNumber = "890-123-4567", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Ethan Brown", Role = "Manager", Area = areas[0], Email = "ethan.brown@example.com", PhoneNumber = "901-234-5678", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Mia Walker", Role = "Cleaner", Area = areas[0], Email = "mia.walker@example.com", PhoneNumber = "012-345-6789", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+
+                            // Area 1
+                            new Employee { Name = "Noah Taylor", Role = "Technician", Area = areas[1], Email = "noah.taylor@example.com", PhoneNumber = "123-555-7890", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Emma Harris", Role = "Supervisor", Area = areas[1], Email = "emma.harris@example.com", PhoneNumber = "234-666-8901", HireDate = DateTime.Now.AddYears(-7), IsActive = true },
+                            new Employee { Name = "Ava Lewis", Role = "Operator", Area = areas[1], Email = "ava.lewis@example.com", PhoneNumber = "345-777-9012", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Charlotte Clark", Role = "Security", Area = areas[1], Email = "charlotte.clark@example.com", PhoneNumber = "456-888-0123", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                            new Employee { Name = "Mason Lee", Role = "Pizza", Area = areas[1], Email = "mason.lee@example.com", PhoneNumber = "567-999-1234", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "Amelia Hall", Role = "Cleaner", Area = areas[1], Email = "amelia.hall@example.com", PhoneNumber = "678-444-5678", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                            new Employee { Name = "Logan Allen", Role = "Technician", Area = areas[1], Email = "logan.allen@example.com", PhoneNumber = "890-555-6789", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Harper Wright", Role = "Security", Area = areas[1], Email = "harper.wright@example.com", PhoneNumber = "901-666-3456", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Ella King", Role = "Supervisor", Area = areas[1], Email = "ella.king@example.com", PhoneNumber = "234-777-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Jackson Lopez", Role = "Operator", Area = areas[1], Email = "jackson.lopez@example.com", PhoneNumber = "345-888-1234", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+
+                            // Area 2
+                            new Employee { Name = "Evelyn Scott", Role = "Technician", Area = areas[2], Email = "evelyn.scott@example.com", PhoneNumber = "123-123-4567", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Alexander Perez", Role = "Cleaner", Area = areas[2], Email = "alexander.perez@example.com", PhoneNumber = "234-234-5678", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "Sophia Anderson", Role = "Operator", Area = areas[2], Email = "sophia.anderson@example.com", PhoneNumber = "345-345-6789", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                            new Employee { Name = "Michael Young", Role = "Security", Area = areas[2], Email = "michael.young@example.com", PhoneNumber = "456-456-7890", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Isabella Thompson", Role = "Supervisor", Area = areas[2], Email = "isabella.thompson@example.com", PhoneNumber = "567-567-8901", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                            new Employee { Name = "Benjamin Rivera", Role = "Technician", Area = areas[2], Email = "benjamin.rivera@example.com", PhoneNumber = "678-678-9012", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Abigail Hernandez", Role = "Cleaner", Area = areas[2], Email = "abigail.hernandez@example.com", PhoneNumber = "789-789-0123", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Lucas Campbell", Role = "Manager", Area = areas[2], Email = "lucas.campbell@example.com", PhoneNumber = "890-890-1234", HireDate = DateTime.Now.AddYears(-7), IsActive = true },
+                            new Employee { Name = "Chloe Stewart", Role = "Pizza", Area = areas[2], Email = "chloe.stewart@example.com", PhoneNumber = "901-901-2345", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Ella Flores", Role = "Security", Area = areas[2], Email = "ella.flores@example.com", PhoneNumber = "123-123-3456", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                    
+                            // Area 3
+                            new Employee { Name = "Oliver Martin", Role = "Cleaner", Area = areas[3], Email = "oliver.martin@example.com", PhoneNumber = "234-234-4567", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Liam Peterson", Role = "Technician", Area = areas[3], Email = "liam.peterson@example.com", PhoneNumber = "345-345-5678", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "Ava Roberts", Role = "Supervisor", Area = areas[3], Email = "ava.roberts@example.com", PhoneNumber = "456-456-7890", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Ethan Wood", Role = "Security", Area = areas[3], Email = "ethan.wood@example.com", PhoneNumber = "567-567-8901", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                            new Employee { Name = "Amelia Fisher", Role = "Technician", Area = areas[3], Email = "amelia.fisher@example.com", PhoneNumber = "678-678-9012", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Charlotte Bennett", Role = "Operator", Area = areas[3], Email = "charlotte.bennett@example.com", PhoneNumber = "789-789-0123", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "Mason Bell", Role = "Manager", Area = areas[3], Email = "mason.bell@example.com", PhoneNumber = "890-890-1234", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                            new Employee { Name = "Sophia Brooks", Role = "Cleaner", Area = areas[3], Email = "sophia.brooks@example.com", PhoneNumber = "901-901-2345", HireDate = DateTime.Now.AddYears(-7), IsActive = true },
+                            new Employee { Name = "Isabella Jenkins", Role = "Pizza", Area = areas[3], Email = "isabella.jenkins@example.com", PhoneNumber = "123-123-3456", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Logan Stewart", Role = "Technician", Area = areas[3], Email = "logan.stewart@example.com", PhoneNumber = "234-234-5678", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+
+                             // Area 4
+                            new Employee { Name = "Sophia Edwards", Role = "Pizza", Area = areas[4], Email = "sophia.edwards@example.com", PhoneNumber = "456-456-6789", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
+                            new Employee { Name = "Benjamin Morris", Role = "Cleaner", Area = areas[4], Email = "benjamin.morris@example.com", PhoneNumber = "567-567-7890", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
+                            new Employee { Name = "Ella Ramirez", Role = "Supervisor", Area = areas[4], Email = "ella.ramirez@example.com", PhoneNumber = "678-678-8901", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
+                            new Employee { Name = "Alexander Perry", Role = "Operator", Area = areas[4], Email = "alexander.perry@example.com", PhoneNumber = "789-789-9012", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Ava Reed", Role = "Technician", Area = areas[4], Email = "ava.reed@example.com", PhoneNumber = "890-890-0123", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
+                            new Employee { Name = "Liam Carter", Role = "Security", Area = areas[4], Email = "liam.carter@example.com", PhoneNumber = "901-901-1234", HireDate = DateTime.Now.AddYears(-7), IsActive = true },
+                            new Employee { Name = "Emma Foster", Role = "Manager", Area = areas[4], Email = "emma.foster@example.com", PhoneNumber = "123-123-2345", HireDate = DateTime.Now.AddYears(-8), IsActive = true },
+                            new Employee { Name = "Noah Powell", Role = "Technician", Area = areas[4], Email = "noah.powell@example.com", PhoneNumber = "234-234-3456", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
+                            new Employee { Name = "Olivia Simmons", Role = "Cleaner", Area = areas[4], Email = "olivia.simmons@example.com", PhoneNumber = "345-345-4567", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
+                            new Employee { Name = "Evelyn Hayes", Role = "Supervisor", Area = areas[4], Email = "evelyn.hayes@example.com", PhoneNumber = "456-456-5678", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
                     };
 
                     Employees.AddRange(employees);
