@@ -41,12 +41,29 @@ namespace Toverland_Api.Services
 
         public async Task TruncateTablesAsync()
         {
-            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [VisitorCounts]");
-            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Maintenances]");
-            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Attractions]");
-            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Employees]");
-            await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Areas]");
+            try
+            {
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [VisitorCounts]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('VisitorCounts', RESEED, 0)");
+
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Maintenances]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Maintenances', RESEED, 0)");
+
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Attractions]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Attractions', RESEED, 0)");
+
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Employees]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Employees', RESEED, 0)");
+
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Areas]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Areas', RESEED, 0)");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during table truncation: {ex.Message}");
+            }
         }
+
 
     }
 }

@@ -12,8 +12,8 @@ using Toverland_Api.Data;
 namespace Toverland_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250109094853_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250110093639_EnsureTablesExist")]
+    partial class EnsureTablesExist
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
