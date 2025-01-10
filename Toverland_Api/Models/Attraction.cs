@@ -20,6 +20,23 @@ namespace Toverland_Api.Models
         private int? _queueLength;
         private object? _maintenances;
 
+        // none parameter constructor is default
+        public Attraction() { }
+
+        // all parameters given to constructor
+        public Attraction(int id, string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength)
+        {
+            _name = name ?? throw new ArgumentNullException(nameof(name));
+            _minHeight = minHeight;
+            _areaId = areaId;
+            _description = description;
+            _openingTime = openingTime;
+            _closingTime = closingTime;
+            _capacity = capacity;
+            _queueSpeed = queueSpeed;
+            _queueLength = queueLength;
+        }
+
         public int Id
         {
             get => _id;
@@ -98,4 +115,3 @@ namespace Toverland_Api.Models
         }
     }
 }
-
