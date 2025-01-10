@@ -4,6 +4,27 @@ using System.Text.Json.Serialization;
 
 namespace Toverland_Api.Models
 {
+    public class AttractionDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double? MinHeight { get; set; }
+        public string? Description { get; set; }
+        public TimeSpan? OpeningTime { get; set; }
+        public TimeSpan? ClosingTime { get; set; }
+        public int? Capacity { get; set; }
+        public double? QueueSpeed { get; set; }
+        public int? QueueLength { get; set; }
+    }
+
+    public class AreaWithAttractionsDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Size { get; set; }
+        public List<AttractionDto> Attractions { get; set; } = new List<AttractionDto>();
+    }
+
     public class Area
     {
         private int _id;
