@@ -2,8 +2,29 @@
 {
     public class VisitorCount
     {
-        public int Id { get; set; }
-        public DateTime? Date { get; set; }
-        public int? Count { get; set; }
+        private int _id;
+        private DateTime? _date;
+        private int? _count;
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+
+        public DateTime? Date
+        {
+            get => _date;
+            set => _date = value;
+        }
+
+        public int? Count
+        {
+            get => _count;
+            set => _count = value;
+        }
     }
 }
+
+
+

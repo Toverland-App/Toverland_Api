@@ -85,6 +85,9 @@ else
         app.UseHsts();
     }
 
+    // Add Basic Authentication Middleware
+    app.UseMiddleware<BasicAuthMiddleware>("DigitaleTovenaars", "password");
+
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
 
@@ -126,4 +129,6 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
         }
     }
 }
+
+
 
