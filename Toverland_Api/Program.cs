@@ -57,33 +57,63 @@ var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
 logger.LogInformation("Starting application...");
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Seed the database
+using (var scope = app.Services.CreateScope())
 {
-    app.UseDeveloperExceptionPage();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate(); // Ensure the database is created and migrations are applied
+    context.Seed();
+}
+
+// Handle the --dumpdata argument
+if (args.Length > 0 && args[0] == "--dumpdata")
+{
+    if (args.Length < 2)
+    {
+        Console.WriteLine("Please provide a file name for the data dump.");
+        return;
+    }
+
+    var fileName = args[1];
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var dataDumpService = services.GetRequiredService<DataDumpService>();
+        dataDumpService.DumpDataAsync(fileName).Wait();
+        Console.WriteLine($"Data dumped to {fileName}");
+    }
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
+    }
+
+    // Add Basic Authentication Middleware
+    app.UseMiddleware<BasicAuthMiddleware>("DigitaleTovenaars", "password");
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
+
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+
+    // Use CORS middleware
+    app.UseCors("AllowAll");
+
+    app.MapControllers();
+
+    logger.LogInformation("Starting web host...");
+    app.Run();
 }
-
-// Add Basic Authentication Middleware
-app.UseMiddleware<BasicAuthMiddleware>("DigitaleTovenaars", "password");
-
-app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-
-// Use CORS middleware
-app.UseCors("AllowAll");
-
-app.MapControllers();
-
-logger.LogInformation("Starting web host...");
-app.Run();
 
 // Custom TimeSpan converter
 public class TimeSpanConverter : JsonConverter<TimeSpan?>
@@ -112,3 +142,4 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
         }
     }
 }
+

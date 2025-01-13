@@ -12,8 +12,8 @@ using Toverland_Api.Data;
 namespace Toverland_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250113144301_UpdateFeedbackModel")]
-    partial class UpdateFeedbackModel
+    [Migration("20250113160308_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

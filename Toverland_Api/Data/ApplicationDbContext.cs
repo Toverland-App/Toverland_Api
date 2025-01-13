@@ -195,6 +195,30 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("VisitorCounts already exist. Skipping seeding.");
                 }
+                if (!Feedbacks.Any())
+                {
+                    _logger.LogInformation("Seeding Feedbacks...");
+                    var feedbacks = new[] {
+                        new Feedback(1, "Great park!", "2021-09-01", 2),
+                        new Feedback(2, "I had a lot of fun!", "2021-09-02", 1),
+                        new Feedback(3, "The food was delicious!", "2021-09-03", 2),
+                        new Feedback(4, "The staff was very friendly.", "2021-09-04", 2),
+                        new Feedback(5, "The park was clean and well-maintained.", "2021-09-05", 2),
+                        new Feedback(6, "I didn't like the long lines.", "2021-09-06", 0),
+                        new Feedback(7, "The park was too crowded.", "2021-09-07", 0),
+                        new Feedback(8, "The park was too expensive.", "2021-09-08", 0),
+                        new Feedback(9, "I got lost in the park.", "2021-09-09", 1),
+                        new Feedback(10, "I didn't like the food.", "2021-09-10", 0)
+                    };
+                    Feedbacks.AddRange(feedbacks);
+                    SaveChanges();
+                    _logger.LogInformation("Feedbacks seeded.");
+                }
+                else
+                {
+                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
+                }
+
 
                 _logger.LogInformation("Database seeding completed.");
             }
