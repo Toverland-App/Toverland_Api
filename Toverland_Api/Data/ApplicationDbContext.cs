@@ -20,6 +20,7 @@ namespace Toverland_Api.Data
         public DbSet<Maintenance> Maintenances { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<VisitorCount> VisitorCounts { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
