@@ -57,6 +57,9 @@ namespace Toverland_Api.Services
 
                 await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Areas]");
                 await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Areas', RESEED, 0)");
+
+                await _context.Database.ExecuteSqlRawAsync("DELETE FROM [Feedbacks]");
+                await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Feedbacks', RESEED, 0)");
             }
             catch (Exception ex)
             {

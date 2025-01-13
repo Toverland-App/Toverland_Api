@@ -199,16 +199,16 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Seeding Feedbacks...");
                     var feedbacks = new[] {
-                        new Feedback(1, "Great park!", "2021-09-01", 2),
-                        new Feedback(2, "I had a lot of fun!", "2021-09-02", 1),
-                        new Feedback(3, "The food was delicious!", "2021-09-03", 2),
-                        new Feedback(4, "The staff was very friendly.", "2021-09-04", 2),
-                        new Feedback(5, "The park was clean and well-maintained.", "2021-09-05", 2),
-                        new Feedback(6, "I didn't like the long lines.", "2021-09-06", 0),
-                        new Feedback(7, "The park was too crowded.", "2021-09-07", 0),
-                        new Feedback(8, "The park was too expensive.", "2021-09-08", 0),
-                        new Feedback(9, "I got lost in the park.", "2021-09-09", 1),
-                        new Feedback(10, "I didn't like the food.", "2021-09-10", 0)
+                        new Feedback { Id = 1, Description = "Geweldig park!", Date = "2021-09-01", Rating = 2 },
+                        new Feedback { Id = 2, Description = "Ik heb veel plezier gehad!", Date = "2021-09-02", Rating = 1 },
+                        new Feedback { Id = 3, Description = "Het eten was heerlijk!", Date = "2021-09-03", Rating = 2 },
+                        new Feedback { Id = 4, Description = "Het personeel was erg vriendelijk.", Date = "2021-09-04", Rating = 2 },
+                        new Feedback { Id = 5, Description = "Het park was schoon en goed onderhouden.", Date = "2021-09-05", Rating = 2 },
+                        new Feedback { Id = 6, Description = "Ik vond de lange rijen niet leuk.", Date = "2021-09-06", Rating = 0 },
+                        new Feedback { Id = 7, Description = "Het park was te druk.", Date = "2021-09-07", Rating = 0 },
+                        new Feedback { Id = 8, Description = "Het park was te duur.", Date = "2021-09-08", Rating = 0 },
+                        new Feedback { Id = 9, Description = "Ik raakte verdwaald in het park.", Date = "2021-09-09", Rating = 1 },
+                        new Feedback { Id = 10, Description = "Ik vond het eten niet lekker.", Date = "2021-09-10", Rating = 0 }
                     };
                     Feedbacks.AddRange(feedbacks);
                     SaveChanges();
