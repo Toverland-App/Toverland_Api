@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Toverland_Api.Services;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,29 +52,32 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Seed the database
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    var dataDumpService = scope.ServiceProvider.GetRequiredService<DataDumpService>();
-    dbContext.Database.Migrate();
-    await dataDumpService.TruncateTablesAsync();
-    dbContext.Seed();
-}
+// Obtain the logger from the DI container
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+logger.LogInformation("Starting application...");
 
 // Handle dumpdata command
-if (args.Length > 0 && args[0] == "dumpdata")
-{
-    using var scope = app.Services.CreateScope();
-    var services = scope.ServiceProvider;
-    var dataDumpService = services.GetRequiredService<DataDumpService>();
 
-    var filePath = args.Length > 1 ? args[1] : "data_dump.json";
-    await dataDumpService.DumpDataAsync(filePath);
-    Console.WriteLine($"Data dumped to {filePath}");
-}
-else
-{
+
+    // Seed the database
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var dataDumpService = scope.ServiceProvider.GetRequiredService<DataDumpService>();
+        try
+        {
+            dbContext.Database.Migrate();
+            await dataDumpService.TruncateTablesAsync();
+            dbContext.Seed();
+            logger.LogInformation("Database seeding completed.");
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "An error occurred while seeding the database.");
+        }
+    }
+
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
@@ -99,8 +103,11 @@ else
 
     app.MapControllers();
 
+    logger.LogInformation("Starting web host...");
     app.Run();
-}
+
+
+
 
 // Custom TimeSpan converter
 public class TimeSpanConverter : JsonConverter<TimeSpan?>
@@ -129,6 +136,3 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
         }
     }
 }
-
-
-
