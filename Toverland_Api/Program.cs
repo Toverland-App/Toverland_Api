@@ -57,57 +57,33 @@ var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
 logger.LogInformation("Starting application...");
 
-// Handle dumpdata command
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
 
+// Add Basic Authentication Middleware
+app.UseMiddleware<BasicAuthMiddleware>("DigitaleTovenaars", "password");
 
-    // Seed the database
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        var dataDumpService = scope.ServiceProvider.GetRequiredService<DataDumpService>();
-        try
-        {
-            dbContext.Database.Migrate();
-            await dataDumpService.TruncateTablesAsync();
-            dbContext.Seed();
-            logger.LogInformation("Database seeding completed.");
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "An error occurred while seeding the database.");
-        }
-    }
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
 
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        app.UseExceptionHandler("/Home/Error");
-        app.UseHsts();
-    }
+app.UseHttpsRedirection();
+app.UseAuthorization();
 
-    // Add Basic Authentication Middleware
-    app.UseMiddleware<BasicAuthMiddleware>("DigitaleTovenaars", "password");
+// Use CORS middleware
+app.UseCors("AllowAll");
 
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toverland API v1"));
+app.MapControllers();
 
-    app.UseHttpsRedirection();
-    app.UseAuthorization();
-
-    // Use CORS middleware
-    app.UseCors("AllowAll");
-
-    app.MapControllers();
-
-    logger.LogInformation("Starting web host...");
-    app.Run();
-
-
-
+logger.LogInformation("Starting web host...");
+app.Run();
 
 // Custom TimeSpan converter
 public class TimeSpanConverter : JsonConverter<TimeSpan?>

@@ -28,10 +28,10 @@ namespace Toverland_Api.Models
         {
             _name = name ?? throw new ArgumentNullException(nameof(name));
             _minHeight = minHeight;
-            _areaId = areaId;
+            _areaId = areaId == 0 ? 1 : areaId;
             _description = description;
-            _openingTime = openingTime;
-            _closingTime = closingTime;
+            _openingTime = openingTime ?? new TimeSpan(9, 0, 0);
+            _closingTime = closingTime ?? new TimeSpan(18, 0, 0);
             _capacity = capacity;
             _queueSpeed = queueSpeed;
             _queueLength = queueLength;
@@ -60,7 +60,7 @@ namespace Toverland_Api.Models
         public int AreaId
         {
             get => _areaId;
-            set => _areaId = value;
+            set => _areaId = value == 0 ? 1 : value;
         }
 
         [ForeignKey("AreaId")]
@@ -80,13 +80,13 @@ namespace Toverland_Api.Models
         public TimeSpan? OpeningTime
         {
             get => _openingTime;
-            set => _openingTime = value;
+            set => _openingTime = value ?? new TimeSpan(9, 0, 0);
         }
 
         public TimeSpan? ClosingTime
         {
             get => _closingTime;
-            set => _closingTime = value;
+            set => _closingTime = value ?? new TimeSpan(18, 0, 0);
         }
 
         public int? Capacity
