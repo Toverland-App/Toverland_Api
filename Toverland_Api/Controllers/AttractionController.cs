@@ -36,8 +36,6 @@ namespace Toverland_Api.Controllers
             return Ok(attractions);
         }
 
-
-
         [HttpGet("{id}")]
         public ActionResult<Attraction> Get(int id)
         {
@@ -76,7 +74,8 @@ namespace Toverland_Api.Controllers
                 attraction.ClosingTime,
                 attraction.Capacity,
                 attraction.QueueSpeed,
-                attraction.QueueLength
+                attraction.QueueLength,
+                attraction.Image
             );
 
             _context.Attractions.Add(newAttraction);
@@ -127,6 +126,7 @@ namespace Toverland_Api.Controllers
             attraction.Capacity = updatedAttraction.Capacity ?? attraction.Capacity;
             attraction.QueueSpeed = updatedAttraction.QueueSpeed ?? attraction.QueueSpeed;
             attraction.QueueLength = updatedAttraction.QueueLength ?? attraction.QueueLength;
+            attraction.Image = updatedAttraction.Image ?? attraction.Image;
 
             try
             {

@@ -65,20 +65,20 @@ namespace Toverland_Api.Data
                     var areas = Areas.ToList(); // Fetch areas from the database
                     var attractions = new[]
                     {
-                        new Attraction(1, "Fēnix", 1.4, areas[1].Id, "A thrilling roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 1000, 20, 50), // Avalon
-                        new Attraction(2, "Troy", 1.2, areas[3].Id, "A wooden roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 800, 15, 40), // Ithaka
-                        new Attraction(3, "Dwervelwind", 1.3, areas[4].Id, "A spinning coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30), // Magische Vallei
-                        new Attraction(4, "Merlin's Quest", 1.0, areas[1].Id, "A boat ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20), // Avalon
-                        new Attraction(5, "Maximus' Blitz Bahn", 1.1, areas[0].Id, "A bobsled coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25), // Land van Toos
-                        new Attraction(6, "Toos-Express", 1.0, areas[0].Id, "A family coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 900, 18, 35), // Land van Toos
-                        new Attraction(7, "Djengu River", 1.2, areas[4].Id, "A river rapids ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30), // Magische Vallei
-                        new Attraction(8, "Scorpios", 1.1, areas[3].Id, "A pirate ship ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20), // Ithaka
-                        new Attraction(9, "Booster Bike", 1.3, areas[5].Id, "A motorbike coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25), // Wunderwald
-                        new Attraction(10, "Villa Fiasko", 1.0, areas[0].Id, "A fun house", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15), // Land van Toos
-                        new Attraction(11, "Expedition Zork", 1.2, areas[4].Id, "A log flume ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30), // Magische Vallei
-                        new Attraction(12, "Magic Bikes", 1.0, areas[0].Id, "A flying bike ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20), // Land van Toos
-                        new Attraction(13, "Tolly Molly", 1.0, areas[2].Id, "A carousel", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 300, 5, 10), // Port Laguna
-                        new Attraction(14, "Paarden van Ithaka", 1.0, areas[3].Id, "A horse ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15) // Ithaka
+                        new Attraction(1, "Fēnix", 1.4, areas[1].Id, "A thrilling roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 1000, 20, 50, "https://pretparkvergelijker.nl/wp-content/uploads/Fenix-in-Toverland-Pretpark-Vergelijker.nl_.jpg"), // Avalon
+                        new Attraction(2, "Troy", 1.2, areas[3].Id, "A wooden roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 800, 15, 40, "https://www.looopings.nl/img/foto/290617wako.jpg"), // Ithaka
+                        new Attraction(3, "Dwervelwind", 1.3, areas[4].Id, "A spinning coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/_processed_/4/f/csm_Beeldbank_Dwervelwind_cbb688dac1.jpg"), // Magische Vallei
+                        new Attraction(4, "Merlin's Quest", 1.0, areas[1].Id, "A boat ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/_processed_/2/1/csm_flaming_feather_merlins_quest_aa8513d911.jpg"), // Avalon
+                        new Attraction(5, "Maximus' Blitz Bahn", 1.1, areas[0].Id, "A bobsled coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Maximus_Wunderball_middel.jpg"), // Land van Toos
+                        new Attraction(6, "Toos-Express", 1.0, areas[0].Id, "A family coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 900, 18, 35, "https://www.toverland.com/fileadmin/_processed_/2/4/csm_Toos_express_doorkijk_middel_e8c26d73ff.jpg"), // Land van Toos
+                        new Attraction(7, "Djengu River", 1.2, areas[4].Id, "A river rapids ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Djengu_River_middel.jpg"), // Magische Vallei
+                        new Attraction(8, "Scorpios", 1.1, areas[3].Id, "A pirate ship ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Scorpios_middel.jpg"), // Ithaka
+                        new Attraction(9, "Booster Bike", 1.3, areas[5].Id, "A motorbike coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Booster_Bike_middel.jpg"), // Wunderwald
+                        new Attraction(10, "Villa Fiasko", 1.0, areas[0].Id, "A fun house", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Villa_Fiasko_middel.jpg"), // Land van Toos
+                        new Attraction(11, "Expedition Zork", 1.2, areas[4].Id, "A log flume ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Expedition_Zork_middel.jpg"), // Magische Vallei
+                        new Attraction(12, "Magic Bikes", 1.0, areas[0].Id, "A flying bike ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/_processed_/3/2/csm_Exploria_Magica_0366162a7f.jpg"), // Land van Toos
+                        new Attraction(13, "Tolly Molly", 1.0, areas[2].Id, "A carousel", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 300, 5, 10, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Tolly_Molly_middel.jpgx"), // Port Laguna
+                        new Attraction(14, "Paarden van Ithaka", 1.0, areas[3].Id, "A horse ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Paarden_van_Ithaka_middel.jpg") // Ithaka
                     };
 
                     Attractions.AddRange(attractions);
@@ -89,7 +89,29 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Attractions already exist. Skipping seeding.");
                 }
-
+                if (!Feedbacks.Any())
+                {
+                    _logger.LogInformation("Seeding Feedbacks...");
+                    var feedbacks = new[] {
+                        new Feedback(1, "Geweldig park!", "2021-09-01", 2),
+                        new Feedback(2, "Ik heb veel plezier gehad!", "2021-09-02", 1),
+                        new Feedback(3, "Het eten was heerlijk!", "2021-09-03", 2),
+                        new Feedback(4, "Het personeel was erg vriendelijk.", "2021-09-04", 2),
+                        new Feedback(5, "Het park was schoon en goed onderhouden.", "2021-09-05", 2),
+                        new Feedback(6, "Ik vond de lange rijen niet leuk.", "2021-09-06", 0),
+                        new Feedback(7, "Het park was te druk.", "2021-09-07", 0),
+                        new Feedback(8, "Het park was te duur.", "2021-09-08", 0),
+                        new Feedback(9, "Ik raakte verdwaald in het park.", "2021-09-09", 1),
+                        new Feedback(10, "Ik vond het eten niet lekker.", "2021-09-10", 0)
+                    };
+                    Feedbacks.AddRange(feedbacks);
+                    SaveChanges();
+                    _logger.LogInformation("Feedbacks seeded.");
+                }
+                else
+                {
+                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
+                }
                 if (!Employees.Any())
                 {
                     _logger.LogInformation("Seeding Employees...");
@@ -184,9 +206,14 @@ namespace Toverland_Api.Data
                     _logger.LogInformation("Seeding VisitorCounts...");
                     var visitorCounts = new[]
                     {
-                       new VisitorCount { Date = DateTime.Today, Count = 100 },
-                       new VisitorCount { Date = DateTime.Today.AddDays(-1), Count = 150 }
-                   };
+                        new VisitorCount { Date = DateTime.Today.AddDays(-7), Count = 100 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-6), Count = 180 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-5), Count = 220 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-4), Count = 260 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-3), Count = 310 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-2), Count = 270 },
+                        new VisitorCount { Date = DateTime.Today.AddDays(-1), Count = 400 }
+                    };
                     VisitorCounts.AddRange(visitorCounts);
                     SaveChanges();
                     _logger.LogInformation("VisitorCounts seeded.");

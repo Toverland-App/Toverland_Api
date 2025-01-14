@@ -38,7 +38,8 @@ namespace Toverland_Api.Controllers
                         ClosingTime = at.ClosingTime,
                         Capacity = at.Capacity,
                         QueueSpeed = at.QueueSpeed,
-                        QueueLength = at.QueueLength
+                        QueueLength = at.QueueLength,
+                        Image = at.Image
                     }).ToList()
                 })
                 .ToList();
@@ -72,7 +73,8 @@ namespace Toverland_Api.Controllers
                     ClosingTime = a.ClosingTime,
                     Capacity = a.Capacity,
                     QueueSpeed = a.QueueSpeed,
-                    QueueLength = a.QueueLength
+                    QueueLength = a.QueueLength,
+                    Image = a.Image // Added Image property
                 }).ToList()
             };
 

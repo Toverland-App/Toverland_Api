@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -15,6 +16,7 @@ namespace Toverland_Api.Models
         public int? Capacity { get; set; }
         public double? QueueSpeed { get; set; }
         public int? QueueLength { get; set; }
+        public string? Image { get; set; } // Added Image property
     }
 
     public class AreaWithAttractionsDto
@@ -59,5 +61,3 @@ namespace Toverland_Api.Models
         }
     }
 }
-
-
