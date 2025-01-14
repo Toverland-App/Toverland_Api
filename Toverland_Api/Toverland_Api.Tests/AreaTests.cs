@@ -18,7 +18,7 @@ namespace Toverland_Api.Tests
             // Act
             var area = new Area { Id = id, Name = name, Size = size };
 
-            // Assert
+            // Assert 
             Assert.Equal(id, area.Id);
             Assert.Equal(name, area.Name);
             Assert.Equal(size, area.Size);
