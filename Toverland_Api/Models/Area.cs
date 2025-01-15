@@ -27,6 +27,7 @@ namespace Toverland_Api.Models
         public List<AttractionDto> Attractions { get; set; } = new List<AttractionDto>();
     }
 
+
     public class Area
     {
         private int _id;

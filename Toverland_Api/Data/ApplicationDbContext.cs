@@ -89,29 +89,7 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Attractions already exist. Skipping seeding.");
                 }
-                if (!Feedbacks.Any())
-                {
-                    _logger.LogInformation("Seeding Feedbacks...");
-                    var feedbacks = new[] {
-                        new Feedback(1, "Geweldig park!", "2021-09-01", 2),
-                        new Feedback(2, "Ik heb veel plezier gehad!", "2021-09-02", 1),
-                        new Feedback(3, "Het eten was heerlijk!", "2021-09-03", 2),
-                        new Feedback(4, "Het personeel was erg vriendelijk.", "2021-09-04", 2),
-                        new Feedback(5, "Het park was schoon en goed onderhouden.", "2021-09-05", 2),
-                        new Feedback(6, "Ik vond de lange rijen niet leuk.", "2021-09-06", 0),
-                        new Feedback(7, "Het park was te druk.", "2021-09-07", 0),
-                        new Feedback(8, "Het park was te duur.", "2021-09-08", 0),
-                        new Feedback(9, "Ik raakte verdwaald in het park.", "2021-09-09", 1),
-                        new Feedback(10, "Ik vond het eten niet lekker.", "2021-09-10", 0)
-                    };
-                    Feedbacks.AddRange(feedbacks);
-                    SaveChanges();
-                    _logger.LogInformation("Feedbacks seeded.");
-                }
-                else
-                {
-                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
-                }
+            
                 if (!Employees.Any())
                 {
                     _logger.LogInformation("Seeding Employees...");
@@ -200,7 +178,29 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Employees already exist. Skipping seeding.");
                 }
-
+                if (!Feedbacks.Any())
+                {
+                    _logger.LogInformation("Seeding Feedbacks...");
+                    var feedbacks = new[] {
+                        new Feedback(1, "Geweldig park!", "2021-09-01", 2),
+                        new Feedback(2, "Ik heb veel plezier gehad!", "2021-09-02", 1),
+                        new Feedback(3, "Het eten was heerlijk!", "2021-09-03", 2),
+                        new Feedback(4, "Het personeel was erg vriendelijk.", "2021-09-04", 2),
+                        new Feedback(5, "Het park was schoon en goed onderhouden.", "2021-09-05", 2),
+                        new Feedback(6, "Ik vond de lange rijen niet leuk.", "2021-09-06", 0),
+                        new Feedback(7, "Het park was te druk.", "2021-09-07", 0),
+                        new Feedback(8, "Het park was te duur.", "2021-09-08", 0),
+                        new Feedback(9, "Ik raakte verdwaald in het park.", "2021-09-09", 1),
+                        new Feedback(10, "Ik vond het eten niet lekker.", "2021-09-10", 0)
+                    };
+                    Feedbacks.AddRange(feedbacks);
+                    SaveChanges();
+                    _logger.LogInformation("Feedbacks seeded.");
+                }
+                else
+                {
+                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
+                }
                 if (!VisitorCounts.Any())
                 {
                     _logger.LogInformation("Seeding VisitorCounts...");

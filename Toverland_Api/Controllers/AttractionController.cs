@@ -65,6 +65,50 @@ namespace Toverland_Api.Controllers
             _logger.LogInformation("Creating new attraction: {@Attraction}", attraction);
 
             var newAttraction = new Attraction(
+                attraction.Name,
+                attraction.MinHeight,
+                attraction.AreaId,
+                attraction.Description,
+                attraction.OpeningTime,
+                attraction.ClosingTime,
+                attraction.Capacity,
+                attraction.QueueSpeed,
+                attraction.QueueLength,
+                attraction.Image
+            );
+
+            _context.Attractions.Add(newAttraction);
+            try
+            {
+                _context.SaveChanges();
+                _logger.LogInformation("Attraction created with ID: {Id}", newAttraction.Id);
+                return CreatedAtAction(nameof(Get), new { id = newAttraction.Id }, newAttraction);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while saving the new attraction.");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost("withId")]
+        public ActionResult<Attraction> PostWithId([FromBody] Attraction attraction)
+        {
+            if (attraction == null)
+            {
+                _logger.LogWarning("Received null attraction in POST request.");
+                return BadRequest("Attraction is null.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Received invalid model state in POST request: {ModelState}", ModelState);
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogInformation("Creating new attraction with ID: {@Attraction}", attraction);
+
+            var newAttraction = new Attraction(
                 attraction.Id,
                 attraction.Name,
                 attraction.MinHeight,
@@ -165,5 +209,3 @@ namespace Toverland_Api.Controllers
         }
     }
 }
-
-

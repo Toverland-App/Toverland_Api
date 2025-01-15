@@ -89,6 +89,33 @@ namespace Toverland_Api.Controllers
             return CreatedAtAction(nameof(Get), new { id = area.Id }, area);
         }
 
+        // Overloaded Post method to handle a different type of input
+        [HttpPost("withDetails")]
+        public ActionResult<Area> PostWithDetails([FromBody] AreaWithAttractionsDto areaDto)
+        {
+            var area = new Area
+            {
+                Name = areaDto.Name,
+                Size = areaDto.Size,
+                Attractions = areaDto.Attractions.Select(a => new Attraction
+                {
+                    Name = a.Name,
+                    MinHeight = a.MinHeight,
+                    Description = a.Description,
+                    OpeningTime = a.OpeningTime,
+                    ClosingTime = a.ClosingTime,
+                    Capacity = a.Capacity,
+                    QueueSpeed = a.QueueSpeed,
+                    QueueLength = a.QueueLength,
+                    Image = a.Image
+                }).ToList()
+            };
+
+            _context.Areas.Add(area);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(Get), new { id = area.Id }, area);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Area updatedArea)
         {
@@ -116,4 +143,5 @@ namespace Toverland_Api.Controllers
             return NoContent();
         }
     }
+
 }

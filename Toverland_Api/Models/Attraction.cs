@@ -27,6 +27,22 @@ namespace Toverland_Api.Models
         // all parameters given to constructor
         public Attraction(int id, string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength, string? image)
         {
+            _id = id;
+            _name = name ?? throw new ArgumentNullException(nameof(name));
+            _minHeight = minHeight;
+            _areaId = areaId == 0 ? 1 : areaId;
+            _description = description;
+            _openingTime = openingTime ?? new TimeSpan(9, 0, 0);
+            _closingTime = closingTime ?? new TimeSpan(18, 0, 0);
+            _capacity = capacity;
+            _queueSpeed = queueSpeed;
+            _queueLength = queueLength;
+            _image = image;
+        }
+
+        // constructor without id
+        public Attraction(string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength, string? image)
+        {
             _name = name ?? throw new ArgumentNullException(nameof(name));
             _minHeight = minHeight;
             _areaId = areaId == 0 ? 1 : areaId;
@@ -116,6 +132,8 @@ namespace Toverland_Api.Models
             set => _maintenances = value;
         }
 
+        [Url]
+        [StringLength(2048)]
         public string? Image
         {
             get => _image;
@@ -123,4 +141,3 @@ namespace Toverland_Api.Models
         }
     }
 }
-
