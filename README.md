@@ -1,5 +1,3 @@
-Hier is een voorbeeld van een README.md-bestand voor de Toverland_Api repository:
-
 ```markdown
 # Toverland API
 
@@ -157,6 +155,3 @@ Zie de bijdragegids voor meer informatie over hoe je kunt bijdragen aan dit proj
 ## Licentie
 
 Dit project is gelicentieerd onder de MIT-licentie.
-```
-
-Je kunt deze code in een README.md-bestand plaatsen om de documentatie van je project te verbeteren.
