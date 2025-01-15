@@ -1,4 +1,4 @@
-```markdown
+
 # Toverland API
 
 Dit is de API voor het Toverland attractiepark beheer systeem. Deze API biedt endpoints voor het beheren van attracties, onderhoud, gebieden, medewerkers en bezoekersaantallen.
@@ -148,9 +148,6 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
 }
 ```
 
-## Bijdragen
-
-Zie de bijdragegids voor meer informatie over hoe je kunt bijdragen aan dit project.
 
 ## Licentie
 
