@@ -1,6 +1,143 @@
 @Toverland_Api_HostAddress = http://localhost:5003
 
-GET {{Toverland_Api_HostAddress}}/weatherforecast/
+### AreaController Endpoints ###
+
+# Get All Areas
+GET {{Toverland_Api_HostAddress}}/api/area
 Accept: application/json
+
+###
+
+# Get Area by ID
+GET {{Toverland_Api_HostAddress}}/api/area/1
+Accept: application/json
+
+###
+
+# Create a New Area
+POST {{Toverland_Api_HostAddress}}/api/area
+Content-Type: application/json
+
+{
+  "name": "New Area",
+  "size": 10.0
+}
+
+###
+
+# Create a New Area with Details
+POST {{Toverland_Api_HostAddress}}/api/area/withDetails
+Content-Type: application/json
+
+{
+  "name": "New Area with Details",
+  "size": 12.5,
+  "attractions": [
+    {
+      "name": "New Attraction",
+      "minHeight": 1.2,
+      "description": "A thrilling new attraction",
+      "openingTime": "09:00:00",
+      "closingTime": "18:00:00",
+      "capacity": 1000,
+      "queueSpeed": 20.0,
+      "queueLength": 50,
+      "image": "https://example.com/image.jpg"
+    }
+  ]
+}
+
+###
+
+# Update an Area
+PUT {{Toverland_Api_HostAddress}}/api/area/1
+Content-Type: application/json
+
+{
+  "name": "Updated Area",
+  "size": 15.0
+}
+
+###
+
+# Delete an Area
+DELETE {{Toverland_Api_HostAddress}}/api/area/1
+
+###
+
+### AttractionController Endpoints ###
+
+# Get All Attractions
+GET {{Toverland_Api_HostAddress}}/api/attraction
+Accept: application/json
+
+###
+
+# Get Attraction by ID
+GET {{Toverland_Api_HostAddress}}/api/attraction/1
+Accept: application/json
+
+###
+
+# Create a New Attraction
+POST {{Toverland_Api_HostAddress}}/api/attraction
+Content-Type: application/json
+
+{
+  "name": "New Attraction",
+  "minHeight": 1.2,
+  "areaId": 1,
+  "description": "A thrilling new attraction",
+  "openingTime": "09:00:00",
+  "closingTime": "18:00:00",
+  "capacity": 1000,
+  "queueSpeed": 20.0,
+  "queueLength": 50,
+  "image": "https://example.com/image.jpg"
+}
+
+###
+
+# Create a New Attraction with ID
+POST {{Toverland_Api_HostAddress}}/api/attraction/withId
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "New Attraction with ID",
+  "minHeight": 1.2,
+  "areaId": 1,
+  "description": "A thrilling new attraction",
+  "openingTime": "09:00:00",
+  "closingTime": "18:00:00",
+  "capacity": 1000,
+  "queueSpeed": 20.0,
+  "queueLength": 50,
+  "image": "https://example.com/image.jpg"
+}
+
+###
+
+# Update an Attraction
+PUT {{Toverland_Api_HostAddress}}/api/attraction/1
+Content-Type: application/json
+
+{
+  "name": "test Attraction",
+  "minHeight": 1.3,
+  "areaId": 1,
+  "description": "An updated thrilling attraction",
+  "openingTime": "09:00:00",
+  "closingTime": "18:00:00",
+  "capacity": 1200,
+  "queueSpeed": 25.0,
+  "queueLength": 60,
+  "image": "https://example.com/updated_image.jpg"
+}
+
+###
+
+# Delete an Attraction
+DELETE {{Toverland_Api_HostAddress}}/api/attraction/1
 
 ###
