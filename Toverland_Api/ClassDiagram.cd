@@ -1,52 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Toverland_Api.Models.Area">
-    <Position X="4.25" Y="1.25" Width="1.5" />
+    <Position X="2.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAgABAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACIAAAAEAAgABAAABAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Models\Area.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.Attraction">
-    <Position X="6" Y="1.25" Width="1.5" />
+    <Position X="6.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAACAAAAEAAgAAIAAAACAAQCEAAAAAAAIAACAQAAAAA=</HashCode>
+      <HashCode>IAACYAAAEBAgEAIEAABCAARCEAAAQBAAJAACAQAAGAE=</HashCode>
       <FileName>Models\Attraction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.Employee">
-    <Position X="7.75" Y="1.25" Width="1.5" />
+    <Position X="4.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAACAAAABAEAAAQAQAACAAAAAAIAAAAQAAAAA=</HashCode>
+      <HashCode>AAADIAAAAGAAAABAEIBAQAQAACAAAAAAIAABAQAIEAE=</HashCode>
       <FileName>Models\Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.Feedback">
-    <Position X="4.25" Y="3.25" Width="1.5" />
+    <Position X="9.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAEAAAAgAAAACAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAgAAAEBABAAAAAAAAAAAEBAAAAAAAAAIA=</HashCode>
       <FileName>Models\Feedback.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.Maintenance">
-    <Position X="6" Y="4.75" Width="1.5" />
+    <Position X="2.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAEgAAgAAAAAAAAAAAAAAAAAAABAAAAABAAAAA=</HashCode>
+      <HashCode>AEACAAAEgEAgAABEBABAAAAAAAAAAAABAAAAABAAAAA=</HashCode>
       <FileName>Models\Maintenance.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.Visitor">
-    <Position X="7.75" Y="4.25" Width="1.5" />
+    <Position X="4.5" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACIAAAAAACAAAAAABCAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Visitor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Toverland_Api.Models.VisitorCount">
-    <Position X="4.25" Y="5.5" Width="1.5" />
+    <Position X="8" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAABABAAAQAAAAAAAABAACAAAAAAAA=</HashCode>
       <FileName>Models\VisitorCount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Toverland_Api.Models.AttractionDto">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAEAAgAAIAAAACAAQCEAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Toverland_Api.Models.AreaWithAttractionsDto">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgABAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Area.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
