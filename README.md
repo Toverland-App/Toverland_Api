@@ -151,4 +151,4 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
 
 ## Licentie
 
-Dit project is gelicentieerd onder de MIT-licentie.
+Dit project is gelicentieerd onder de school-licentie.
