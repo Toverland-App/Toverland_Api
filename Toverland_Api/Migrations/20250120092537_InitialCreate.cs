@@ -93,6 +93,7 @@ namespace Toverland_Api.Migrations
                     Capacity = table.Column<int>(type: "int", nullable: true),
                     QueueSpeed = table.Column<double>(type: "float", nullable: true),
                     QueueLength = table.Column<int>(type: "int", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true),
                     EmployeeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

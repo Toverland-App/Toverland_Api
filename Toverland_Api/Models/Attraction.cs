@@ -19,13 +19,12 @@ namespace Toverland_Api.Models
         private double? _queueSpeed;
         private int? _queueLength;
         private object? _maintenances;
-        private string? _image;
 
         // none parameter constructor is default
         public Attraction() { }
 
         // all parameters given to constructor
-        public Attraction(int id, string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength, string? image)
+        public Attraction(int id, string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength)
         {
             _id = id;
             _name = name ?? throw new ArgumentNullException(nameof(name));
@@ -37,11 +36,10 @@ namespace Toverland_Api.Models
             _capacity = capacity;
             _queueSpeed = queueSpeed;
             _queueLength = queueLength;
-            _image = image;
         }
 
         // constructor without id
-        public Attraction(string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength, string? image)
+        public Attraction(string name, double? minHeight, int areaId, string? description, TimeSpan? openingTime, TimeSpan? closingTime, int? capacity, double? queueSpeed, int? queueLength)
         {
             _name = name ?? throw new ArgumentNullException(nameof(name));
             _minHeight = minHeight;
@@ -52,7 +50,6 @@ namespace Toverland_Api.Models
             _capacity = capacity;
             _queueSpeed = queueSpeed;
             _queueLength = queueLength;
-            _image = image;
         }
 
         public int Id
@@ -132,12 +129,5 @@ namespace Toverland_Api.Models
             set => _maintenances = value;
         }
 
-        [Url]
-        [StringLength(2048)]
-        public string? Image
-        {
-            get => _image;
-            set => _image = value;
-        }
     }
 }

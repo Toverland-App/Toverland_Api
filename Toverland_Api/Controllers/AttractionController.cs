@@ -73,8 +73,7 @@ namespace Toverland_Api.Controllers
                 attraction.ClosingTime,
                 attraction.Capacity,
                 attraction.QueueSpeed,
-                attraction.QueueLength,
-                attraction.Image
+                attraction.QueueLength
             );
 
             _context.Attractions.Add(newAttraction);
@@ -118,8 +117,7 @@ namespace Toverland_Api.Controllers
                 attraction.ClosingTime,
                 attraction.Capacity,
                 attraction.QueueSpeed,
-                attraction.QueueLength,
-                attraction.Image
+                attraction.QueueLength
             );
 
             _context.Attractions.Add(newAttraction);
@@ -170,7 +168,6 @@ namespace Toverland_Api.Controllers
             attraction.Capacity = updatedAttraction.Capacity ?? attraction.Capacity;
             attraction.QueueSpeed = updatedAttraction.QueueSpeed ?? attraction.QueueSpeed;
             attraction.QueueLength = updatedAttraction.QueueLength ?? attraction.QueueLength;
-            attraction.Image = updatedAttraction.Image ?? attraction.Image;
 
             try
             {

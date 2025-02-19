@@ -65,20 +65,20 @@ namespace Toverland_Api.Data
                     var areas = Areas.ToList(); // Fetch areas from the database
                     var attractions = new[]
                     {
-                        new Attraction(1, "Fēnix", 1.4, areas[1].Id, "A thrilling roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 1000, 20, 50, "https://pretparkvergelijker.nl/wp-content/uploads/Fenix-in-Toverland-Pretpark-Vergelijker.nl_.jpg"), // Avalon
-                        new Attraction(2, "Troy", 1.2, areas[3].Id, "A wooden roller coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 800, 15, 40, "https://www.looopings.nl/img/foto/290617wako.jpg"), // Ithaka
-                        new Attraction(3, "Dwervelwind", 1.3, areas[4].Id, "A spinning coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/_processed_/4/f/csm_Beeldbank_Dwervelwind_cbb688dac1.jpg"), // Magische Vallei
-                        new Attraction(4, "Merlin's Quest", 1.0, areas[1].Id, "A boat ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/_processed_/2/1/csm_flaming_feather_merlins_quest_aa8513d911.jpg"), // Avalon
-                        new Attraction(5, "Maximus' Blitz Bahn", 1.1, areas[0].Id, "A bobsled coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Maximus_Wunderball_middel.jpg"), // Land van Toos
-                        new Attraction(6, "Toos-Express", 1.0, areas[0].Id, "A family coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 900, 18, 35, "https://www.toverland.com/fileadmin/_processed_/2/4/csm_Toos_express_doorkijk_middel_e8c26d73ff.jpg"), // Land van Toos
-                        new Attraction(7, "Djengu River", 1.2, areas[4].Id, "A river rapids ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Djengu_River_middel.jpg"), // Magische Vallei
-                        new Attraction(8, "Scorpios", 1.1, areas[3].Id, "A pirate ship ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Scorpios_middel.jpg"), // Ithaka
-                        new Attraction(9, "Booster Bike", 1.3, areas[5].Id, "A motorbike coaster", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 700, 12, 25, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Booster_Bike_middel.jpg"), // Wunderwald
-                        new Attraction(10, "Villa Fiasko", 1.0, areas[0].Id, "A fun house", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Villa_Fiasko_middel.jpg"), // Land van Toos
-                        new Attraction(11, "Expedition Zork", 1.2, areas[4].Id, "A log flume ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 600, 10, 30, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Expedition_Zork_middel.jpg"), // Magische Vallei
-                        new Attraction(12, "Magic Bikes", 1.0, areas[0].Id, "A flying bike ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 500, 8, 20, "https://www.toverland.com/fileadmin/_processed_/3/2/csm_Exploria_Magica_0366162a7f.jpg"), // Land van Toos
-                        new Attraction(13, "Tolly Molly", 1.0, areas[2].Id, "A carousel", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 300, 5, 10, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Tolly_Molly_middel.jpgx"), // Port Laguna
-                        new Attraction(14, "Paarden van Ithaka", 1.0, areas[3].Id, "A horse ride", new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0), 400, 5, 15, "https://www.toverland.com/fileadmin/user_upload/MapJ/Attracties/Paarden_van_Ithaka_middel.jpg") // Ithaka
+                        new Attraction { Name = "Fēnix", Area = areas[1], MinHeight = 1.4, Description = "A thrilling roller coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 1000, QueueSpeed = 20, QueueLength = 50 }, // Avalon
+                        new Attraction { Name = "Troy", Area = areas[3], MinHeight = 1.2, Description = "A wooden roller coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 800, QueueSpeed = 15, QueueLength = 40 }, // Ithaka
+                        new Attraction { Name = "Dwervelwind", Area = areas[4], MinHeight = 1.3, Description = "A spinning coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 600, QueueSpeed = 10, QueueLength = 30 }, // Magische Vallei
+                        new Attraction { Name = "Merlin's Quest", Area = areas[1], MinHeight = 1.0, Description = "A boat ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 500, QueueSpeed = 8, QueueLength = 20 }, // Avalon
+                        new Attraction { Name = "Maximus' Blitz Bahn", Area = areas[0], MinHeight = 1.1, Description = "A bobsled coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 700, QueueSpeed = 12, QueueLength = 25 }, // Land van Toos
+                        new Attraction { Name = "Toos-Express", Area = areas[0], MinHeight = 1.0, Description = "A family coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 900, QueueSpeed = 18, QueueLength = 35 }, // Land van Toos
+                        new Attraction { Name = "Djengu River", Area = areas[4], MinHeight = 1.2, Description = "A river rapids ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 600, QueueSpeed = 10, QueueLength = 30 }, // Magische Vallei
+                        new Attraction { Name = "Scorpios", Area = areas[3], MinHeight = 1.1, Description = "A pirate ship ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 500, QueueSpeed = 8, QueueLength = 20 }, // Ithaka
+                        new Attraction { Name = "Booster Bike", Area = areas[5], MinHeight = 1.3, Description = "A motorbike coaster", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 700, QueueSpeed = 12, QueueLength = 25 }, // Wunderwald
+                        new Attraction { Name = "Villa Fiasko", Area = areas[0], MinHeight = 1.0, Description = "A fun house", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 400, QueueSpeed = 5, QueueLength = 15 }, // Land van Toos
+                        new Attraction { Name = "Expedition Zork", Area = areas[4], MinHeight = 1.2, Description = "A log flume ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 600, QueueSpeed = 10, QueueLength = 30 }, // Magische Vallei
+                        new Attraction { Name = "Magic Bikes", Area = areas[0], MinHeight = 1.0, Description = "A flying bike ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 500, QueueSpeed = 8, QueueLength = 20 }, // Land van Toos
+                        new Attraction { Name = "Tolly Molly", Area = areas[2], MinHeight = 1.0, Description = "A carousel", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 300, QueueSpeed = 5, QueueLength = 10 }, // Port Laguna
+                        new Attraction { Name = "Paarden van Ithaka", Area = areas[3], MinHeight = 1.0, Description = "A horse ride", OpeningTime = new TimeSpan(9, 0, 0), ClosingTime = new TimeSpan(18, 0, 0), Capacity = 400, QueueSpeed = 5, QueueLength = 15 } // Ithaka
                     };
 
                     Attractions.AddRange(attractions);
@@ -89,7 +89,7 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Attractions already exist. Skipping seeding.");
                 }
-            
+
                 if (!Employees.Any())
                 {
                     _logger.LogInformation("Seeding Employees...");
@@ -155,19 +155,6 @@ namespace Toverland_Api.Data
                             new Employee { Name = "Noah Powell", Role = "Technician", Area = areas[4], Email = "noah.powell@example.com", PhoneNumber = "234-234-3456", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
                             new Employee { Name = "Olivia Simmons", Role = "Cleaner", Area = areas[4], Email = "olivia.simmons@example.com", PhoneNumber = "345-345-4567", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
                             new Employee { Name = "Evelyn Hayes", Role = "Supervisor", Area = areas[4], Email = "evelyn.hayes@example.com", PhoneNumber = "456-456-5678", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
-                    
-                            // Area 5
-                            new Employee { Name = "Jan de Vries", Role = "Manager", Area = areas[5], Email = "jan.devries@example.com", PhoneNumber = "123-555-7890", HireDate = DateTime.Now.AddYears(-7), IsActive = true },
-                            new Employee { Name = "Emma Jansen", Role = "Technician", Area = areas[5], Email = "emma.jansen@example.com", PhoneNumber = "234-666-8901", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
-                            new Employee { Name = "Tom Smith", Role = "Operator", Area = areas[5], Email = "tom.smith@example.com", PhoneNumber = "345-777-9012", HireDate = DateTime.Now.AddYears(-5), IsActive = true },
-                            new Employee { Name = "Sophie Brown", Role = "Cleaner", Area = areas[5], Email = "sophie.brown@example.com", PhoneNumber = "456-888-0123", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
-                            new Employee { Name = "Pieter Bakker", Role = "Security", Area = areas[5], Email = "pieter.bakker@example.com", PhoneNumber = "567-999-1234", HireDate = DateTime.Now.AddYears(-4), IsActive = true },
-                            new Employee { Name = "Lisa Taylor", Role = "Supervisor", Area = areas[5], Email = "lisa.taylor@example.com", PhoneNumber = "678-444-2345", HireDate = DateTime.Now.AddYears(-1), IsActive = true },
-                            new Employee { Name = "Mark Visser", Role = "Technician", Area = areas[5], Email = "mark.visser@example.com", PhoneNumber = "789-333-3456", HireDate = DateTime.Now.AddYears(-6), IsActive = true },
-                            new Employee { Name = "Anne Wilson", Role = "Operator", Area = areas[5], Email = "anne.wilson@example.com", PhoneNumber = "890-222-4567", HireDate = DateTime.Now.AddYears(-3), IsActive = true },
-                            new Employee { Name = "David Johnson", Role = "Operator", Area = areas[5], Email = "david.johnson@example.com", PhoneNumber = "901-111-5678", HireDate = DateTime.Now.AddYears(-8), IsActive = true },
-                            new Employee { Name = "Kim de Jong", Role = "Cleaner", Area = areas[5], Email = "kim.dejong@example.com", PhoneNumber = "123-000-6789", HireDate = DateTime.Now.AddYears(-2), IsActive = true },
-
                     };
 
                     Employees.AddRange(employees);
@@ -178,42 +165,15 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("Employees already exist. Skipping seeding.");
                 }
-                if (!Feedbacks.Any())
-                {
-                    _logger.LogInformation("Seeding Feedbacks...");
-                    var feedbacks = new[] {
-                        new Feedback(1, "Geweldig park!", "2021-09-01", 2),
-                        new Feedback(2, "Ik heb veel plezier gehad!", "2021-09-02", 1),
-                        new Feedback(3, "Het eten was heerlijk!", "2021-09-03", 2),
-                        new Feedback(4, "Het personeel was erg vriendelijk.", "2021-09-04", 2),
-                        new Feedback(5, "Het park was schoon en goed onderhouden.", "2021-09-05", 2),
-                        new Feedback(6, "Ik vond de lange rijen niet leuk.", "2021-09-06", 0),
-                        new Feedback(7, "Het park was te druk.", "2021-09-07", 0),
-                        new Feedback(8, "Het park was te duur.", "2021-09-08", 0),
-                        new Feedback(9, "Ik raakte verdwaald in het park.", "2021-09-09", 1),
-                        new Feedback(10, "Ik vond het eten niet lekker.", "2021-09-10", 0)
-                    };
-                    Feedbacks.AddRange(feedbacks);
-                    SaveChanges();
-                    _logger.LogInformation("Feedbacks seeded.");
-                }
-                else
-                {
-                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
-                }
+
                 if (!VisitorCounts.Any())
                 {
                     _logger.LogInformation("Seeding VisitorCounts...");
                     var visitorCounts = new[]
                     {
-                        new VisitorCount { Date = DateTime.Today.AddDays(-7), Count = 100 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-6), Count = 180 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-5), Count = 220 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-4), Count = 260 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-3), Count = 310 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-2), Count = 270 },
-                        new VisitorCount { Date = DateTime.Today.AddDays(-1), Count = 400 }
-                    };
+                       new VisitorCount { Date = DateTime.Today, Count = 100 },
+                       new VisitorCount { Date = DateTime.Today.AddDays(-1), Count = 150 }
+                   };
                     VisitorCounts.AddRange(visitorCounts);
                     SaveChanges();
                     _logger.LogInformation("VisitorCounts seeded.");
@@ -222,30 +182,6 @@ namespace Toverland_Api.Data
                 {
                     _logger.LogInformation("VisitorCounts already exist. Skipping seeding.");
                 }
-                if (!Feedbacks.Any())
-                {
-                    _logger.LogInformation("Seeding Feedbacks...");
-                    var feedbacks = new[] {
-                        new Feedback { Id = 1, Description = "Geweldig park!", Date = "2021-09-01", Rating = 2 },
-                        new Feedback { Id = 2, Description = "Ik heb veel plezier gehad!", Date = "2021-09-02", Rating = 1 },
-                        new Feedback { Id = 3, Description = "Het eten was heerlijk!", Date = "2021-09-03", Rating = 2 },
-                        new Feedback { Id = 4, Description = "Het personeel was erg vriendelijk.", Date = "2021-09-04", Rating = 2 },
-                        new Feedback { Id = 5, Description = "Het park was schoon en goed onderhouden.", Date = "2021-09-05", Rating = 2 },
-                        new Feedback { Id = 6, Description = "Ik vond de lange rijen niet leuk.", Date = "2021-09-06", Rating = 0 },
-                        new Feedback { Id = 7, Description = "Het park was te druk.", Date = "2021-09-07", Rating = 0 },
-                        new Feedback { Id = 8, Description = "Het park was te duur.", Date = "2021-09-08", Rating = 0 },
-                        new Feedback { Id = 9, Description = "Ik raakte verdwaald in het park.", Date = "2021-09-09", Rating = 1 },
-                        new Feedback { Id = 10, Description = "Ik vond het eten niet lekker.", Date = "2021-09-10", Rating = 0 }
-                    };
-                    Feedbacks.AddRange(feedbacks);
-                    SaveChanges();
-                    _logger.LogInformation("Feedbacks seeded.");
-                }
-                else
-                {
-                    _logger.LogInformation("Feedbacks already exist. Skipping seeding.");
-                }
-
 
                 _logger.LogInformation("Database seeding completed.");
             }

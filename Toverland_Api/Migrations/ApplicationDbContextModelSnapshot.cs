@@ -66,7 +66,8 @@ namespace Toverland_Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<double?>("MinHeight")
                         .HasColumnType("float");

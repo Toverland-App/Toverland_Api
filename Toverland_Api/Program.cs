@@ -4,7 +4,6 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Toverland_Api.Services;
-using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,37 +51,26 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Obtain the logger from the DI container
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
-
-logger.LogInformation("Starting application...");
-
 // Seed the database
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ApplicationDbContext>();
-    context.Database.Migrate(); // Ensure the database is created and migrations are applied
-    context.Seed();
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var dataDumpService = scope.ServiceProvider.GetRequiredService<DataDumpService>();
+    dbContext.Database.Migrate();
+    await dataDumpService.TruncateTablesAsync();
+    dbContext.Seed();
 }
 
-// Handle the --dumpdata argument
-if (args.Length > 0 && args[0] == "--dumpdata")
+// Handle dumpdata command
+if (args.Length > 0 && args[0] == "dumpdata")
 {
-    if (args.Length < 2)
-    {
-        Console.WriteLine("Please provide a file name for the data dump.");
-        return;
-    }
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var dataDumpService = services.GetRequiredService<DataDumpService>();
 
-    var fileName = args[1];
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        var dataDumpService = services.GetRequiredService<DataDumpService>();
-        dataDumpService.DumpDataAsync(fileName).Wait();
-        Console.WriteLine($"Data dumped to {fileName}");
-    }
+    var filePath = args.Length > 1 ? args[1] : "data_dump.json";
+    await dataDumpService.DumpDataAsync(filePath);
+    Console.WriteLine($"Data dumped to {filePath}");
 }
 else
 {
@@ -111,7 +99,6 @@ else
 
     app.MapControllers();
 
-    logger.LogInformation("Starting web host...");
     app.Run();
 }
 
@@ -142,3 +129,5 @@ public class TimeSpanConverter : JsonConverter<TimeSpan?>
         }
     }
 }
+
+
